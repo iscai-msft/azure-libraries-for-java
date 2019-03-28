@@ -6,8 +6,8 @@
 package com.microsoft.azure.management.containerinstance.implementation;
 
 import com.microsoft.azure.management.apigeneration.LangDefinition;
-import com.microsoft.azure.management.containerinstance.Container;
 import com.microsoft.azure.management.containerinstance.ContainerGroup;
+import com.microsoft.azure.management.containerinstance.ContainerGroupIpAddressType;
 import com.microsoft.azure.management.containerinstance.ContainerGroupNetworkProtocol;
 import com.microsoft.azure.management.containerinstance.ContainerNetworkProtocol;
 import com.microsoft.azure.management.containerinstance.ContainerPort;
@@ -27,12 +27,12 @@ import java.util.Map;
 @LangDefinition
 class ContainerImpl implements
     ContainerGroup.DefinitionStages.ContainerInstanceDefinitionStages.ContainerInstanceDefinition<ContainerGroup.DefinitionStages.WithNextContainerInstance> {
-    private Container innerContainer;
+    private ContainerInner innerContainer;
     private ContainerGroupImpl parent;
 
     ContainerImpl(ContainerGroupImpl parent, String containerName) {
         this.parent = parent;
-        this.innerContainer = new Container()
+        this.innerContainer = new ContainerInner()
             .withName(containerName)
             .withResources(new ResourceRequirements()
                 .withRequests(new ResourceRequests()
@@ -43,7 +43,7 @@ class ContainerImpl implements
     @Override
     public ContainerGroupImpl attach() {
         if (parent.inner().containers() == null) {
-            parent.inner().withContainers(new ArrayList<Container>());
+            parent.inner().withContainers(new ArrayList<ContainerInner>());
         }
         parent.inner().containers().add(innerContainer);
 
@@ -86,7 +86,7 @@ class ContainerImpl implements
         if (parent.inner().ipAddress() == null) {
             parent.inner().withIpAddress(new IpAddress());
         }
-        parent.inner().ipAddress().withType("Public");
+        parent.inner().ipAddress().withType(ContainerGroupIpAddressType.PUBLIC);
         if (parent.inner().ipAddress().ports() == null) {
             parent.inner().ipAddress().withPorts(new ArrayList<Port>());
         }

@@ -9,47 +9,47 @@
 package com.microsoft.azure.management.containerinstance.implementation;
 
 import java.util.List;
+import com.microsoft.azure.management.containerinstance.CachedImages;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The operation list response that contains all operations for Azure Container
- * Instance service.
+ * The response containing cached images.
  */
-public class OperationListResultInner {
+public class CachedImagesListResultInner {
     /**
-     * The list of operations.
+     * The list of cached images.
      */
     @JsonProperty(value = "value")
-    private List<OperationInner> value;
+    private List<CachedImages> value;
 
     /**
-     * The URI to fetch the next page of operations.
+     * The URI to fetch the next page of cached images.
      */
     @JsonProperty(value = "nextLink")
     private String nextLink;
 
     /**
-     * Get the list of operations.
+     * Get the list of cached images.
      *
      * @return the value value
      */
-    public List<OperationInner> value() {
+    public List<CachedImages> value() {
         return this.value;
     }
 
     /**
-     * Set the list of operations.
+     * Set the list of cached images.
      *
      * @param value the value value to set
-     * @return the OperationListResultInner object itself.
+     * @return the CachedImagesListResultInner object itself.
      */
-    public OperationListResultInner withValue(List<OperationInner> value) {
+    public CachedImagesListResultInner withValue(List<CachedImages> value) {
         this.value = value;
         return this;
     }
 
     /**
-     * Get the URI to fetch the next page of operations.
+     * Get the URI to fetch the next page of cached images.
      *
      * @return the nextLink value
      */
@@ -58,12 +58,12 @@ public class OperationListResultInner {
     }
 
     /**
-     * Set the URI to fetch the next page of operations.
+     * Set the URI to fetch the next page of cached images.
      *
      * @param nextLink the nextLink value to set
-     * @return the OperationListResultInner object itself.
+     * @return the CachedImagesListResultInner object itself.
      */
-    public OperationListResultInner withNextLink(String nextLink) {
+    public CachedImagesListResultInner withNextLink(String nextLink) {
         this.nextLink = nextLink;
         return this;
     }
